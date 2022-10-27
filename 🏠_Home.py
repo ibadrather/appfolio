@@ -24,7 +24,7 @@ def run():
         page_icon="👋",
     )
 
-    #st.write("## Welcome! 👋")
+    # st.write("## Welcome! 👋")
 
     st.sidebar.success("Select a app above.")
 
@@ -50,8 +50,9 @@ def run():
   I am looking for a job! If you are interested in hiring me, please contact me on LinkedIn or email me at ibad.rather.@gmail.com
 </body>
 
-    """
-    , unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
 
 if __name__ == "__main__":
