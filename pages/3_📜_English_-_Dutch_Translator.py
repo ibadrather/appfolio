@@ -25,7 +25,6 @@ input_text = st.text_area(
 )
 
 
-
 # option1 = st.selectbox("Input language", ("English",))
 # option2 = st.selectbox("Output language", ("Dutch",))
 
@@ -37,15 +36,19 @@ if st.button("Translate Sentence"):
         st.warning("Please **enter text** for translation")
 
     else:
-        ### Make request to  API
-        res = requests.post(
-            api_url, json={"text": input_text}
-        )
-        
-        st.markdown("### Translated to Dutch:")
-        st.write(res.json()[0]["translation_text"])
-        st.success("Translation successful")
-        #st.success("Translation is **successfully** completed!")
-        #st.balloons()
+        with st.spinner("Loading Model and translating..."):
+            ### Make request to  API
+            res = requests.post(api_url, json={"text": input_text})
+            while res.status_code != 200 and len(res.json()) == 0:
+                try:
+                    res = requests.post(api_url, json={"text": input_text})
+                except:
+                    pass
+
+            st.markdown("### Translation in Dutch:")
+            st.write(res.json()[0]["translation_text"])
+            st.success("Translation successful")
+            st.success("Translation is **successfully** completed!")
+            # st.balloons()
 else:
     pass
