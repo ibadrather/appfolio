@@ -41,18 +41,35 @@ def run():
   <img src="https://media4.giphy.com/media/1GEATImIxEXVR79Dhk/giphy.gif" width="350"/>
 </div>
 
-<div id="header" align="center">
+<div id="header" align="left">
 
   <a href="https://www.linkedin.com/in/ibad-rather/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
+
+  <a href="https://github.com/ibadrather/">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+
+  <a href="mailto:ibad.rather.ir@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
+  </a>
+
+###### Rudolf-Breitscheid-Str 27 Jena
+###### 07747 Germany
+###### +49-15906472860
 </div>
 
-<h5 align="center">👈 You can see some of my projects in the Sidebar.</h5>
 
 <body> 
+
   I am looking for a job! If you are interested in hiring me, please contact me on LinkedIn or email me at ibad.rather.@gmail.com
+
+  This web-app is in continious development. All the features may not work perfectly. If you find any bugs, please report them on the [GitHub repo](https://github.com/ibadrather/appfolio).
 </body>
+
+<h5 align="left">👈 You can see some of my projects in the Sidebar.</h5>
+
 
     """,
         unsafe_allow_html=True,

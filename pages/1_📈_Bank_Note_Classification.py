@@ -2,8 +2,9 @@ import streamlit as st
 import os.path as osp
 import pandas as pd
 import altair as alt
+import requests
 
-#st.title("Bank Note Classification 💵")
+# st.title("Bank Note Classification 💵")
 # Set page tab display
 st.set_page_config(
     page_title="Bank Note Classification 💵",
@@ -34,21 +35,25 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 st.markdown("---")
 
-st.markdown("""
+st.markdown(
+    """
 ### Training the model
 I have trained the model using a simple MLP in PyTorch. You can find the code [here](https://github.com/ibadrather/deep_projects/tree/main/FastAPI_Deployment/2_deploy_dl_app).
 
 Then I converted the trained model to ONNX format and used it in this app. You can find the code [here](https://github.com/ibadrather/deep_projects/tree/main/FastAPI_Deployment/2_deploy_dl_app).
 
-""")
+"""
+)
 
 st.markdown("---")
 
 
-st.markdown(""" 
+st.markdown(
+    """ 
 ### Enter the values for the features. 👇
 Let s see if the model can predict if the note is fake or not correctly.
-""")
+"""
+)
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -61,18 +66,55 @@ with col3:
 with col4:
     entropy = st.number_input("Entroy")
 
+# st.button("Predict")
+
+# Making call to the api
+base_url = "http://127.0.0.1:8000"
+api_url = base_url + "/predict_bank_note"
+
+if st.button("Predict"):
+    if variance == "":
+        st.warning("Please **enter values** for prediction")
+    else:
+        with st.spinner("Loading Model and predicting..."):
+            ### Make request to  API untill we get a response successfully
+            res = requests.post(
+                api_url,
+                json={
+                    "variance": variance,
+                    "skewness": skewness,
+                    "curtosis": curtosis,
+                    "entropy": entropy,
+                },
+            )
+            # We first check if the response is valid
+            prediction = res.json()
+
+            # If the response is valid, we break out of the loop
+            if res.status_code == 200 and prediction != None:
+                st.markdown("### Prediction:")
+                st.write(prediction["Prediction"])
+                st.success("Prediction successful")
+                st.success("Prediction is **successfully** completed!")
+            else:
+                st.error("Something went wrong!")
+
 bank_note_test_data_dir = osp.join(
     "pages", "pages_utils", "bank_note", "BankNote_Authentication_test.csv"
 )
 
-st.markdown("""
+st.markdown("---")
+st.markdown(
+    """
 ###### Test data for model testing:
 I have provided some test data for you to test the model. You can use the test data to test the model.
 The model has not seen this data before. 
-""")
+"""
+)
 bank_note_test_df = pd.read_csv(bank_note_test_data_dir)
 bank_note_test_df.columns = ["Variance", "Skewness", "Curtosis", "Entropy", "Class"]
 st.dataframe(bank_note_test_df)
+
 
 # chart = alt.Chart(bank_note_test_df).mark_area(opacity=0.3).encode()
 # st.altair_chart(chart, use_container_width=True)
