@@ -30,23 +30,26 @@ input_text = st.text_area(
 
 base_url = "http://127.0.0.1:8000"
 api_url = base_url + "/translate_en_nl"
-
 if st.button("Translate Sentence"):
     if input_text == "":
         st.warning("Please **enter text** for translation")
 
     else:
         with st.spinner("Loading Model and translating..."):
-            ### Make request to  API
-            res = requests.post(api_url, json={"text": input_text})
-            while res.status_code != 200 and len(res.json()) == 0:
+            ### Make request to  API untill we get a response successfully
+            while True:
                 try:
                     res = requests.post(api_url, json={"text": input_text})
+                    # We first check if the response is valid
+                    translation = res.json()[0]["translation_text"]
+                    # If the response is valid, we break out of the loop
+                    if res.status_code == 200:
+                        break
                 except:
                     pass
 
             st.markdown("### Translation in Dutch:")
-            st.write(res.json()[0]["translation_text"])
+            st.write(translation)
             st.success("Translation successful")
             st.success("Translation is **successfully** completed!")
             # st.balloons()

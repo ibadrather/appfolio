@@ -13,7 +13,9 @@
 # limitations under the License.
 
 import streamlit as st
+import os.path as osp
 from streamlit.logger import get_logger
+import streamlit.components.v1 as components
 
 LOGGER = get_logger(__name__)
 
@@ -22,6 +24,8 @@ def run():
     st.set_page_config(
         page_title="Welcome",
         page_icon="👋",
+        layout="wide",
+        initial_sidebar_state="expanded",
     )
 
     # st.write("## Welcome! 👋")
@@ -31,7 +35,7 @@ def run():
     st.markdown(
         """
         <h1 align="center"> Hi there 👋, I'm Ibad Rather </h1>
-        <h4 align="center">I'm a Machine Learning Engineer and a Robotics Enthusiast.</h4>
+        <h4 align="center">I'm an Engineer</h4>
 
 <div id="header" align="center">
   <img src="https://media4.giphy.com/media/1GEATImIxEXVR79Dhk/giphy.gif" width="350"/>
@@ -53,6 +57,58 @@ def run():
     """,
         unsafe_allow_html=True,
     )
+
+    st.markdown(
+        """
+    <h3 style="color:blue">Skills</h3>
+    <body>
+    <ul>
+    <li> Python, C++, MATLAB, Linux </li>
+    <li> PyTorch, Scikit-Learn, TensorFlow/Keras, Pytorch-Lightning </li>
+    <li> Pandas, Numpy, SciPy, SymPy </li>
+    <li> OpenCV, ROS, Gazebo </li>
+    <li> FastAPI, Streamlit </li>
+    <li> Git, Docker </li>
+    <li> Leadership, Teaching </li>
+    </ul>
+    </body>
+
+    <h3 style="color:blue">Experience</h3>
+    <h4> Carl Zeiss AG, Jena Germany — Student Researcher </h4>
+    <h6> October 2021 - PRESENT </h6>
+    <ul>
+    <li> Stabilized a video from an oscillating camera using Inertial Measurement Unit sensor data. </li> 
+    <li> Evaluated various Neural Network architectures like Transformer, CNN, ResNet and LSTM for the use case. </li> 
+    <li> Deployed models on edge hardware </li>  
+    <li> Simulated the scenario using AirSim and Unreal Engine. </li> 
+    </ul>
+    <strong>Tech Stack</strong>: PyTorch, Pandas, NumPy, SciPy, OpenCV, Azure DevOps, ONNX, AirSim and Unreal Engine
+
+    <h3 style="color:blue">Education</h3>
+    <h4> Universität Siegen,  Germany — MS Mechatronics </h4>
+    <h6> October  2019 - November 2022 </h6>
+    Specialized in Deep Learning and Robotics.
+    Studied software, mechanical, control, electrical and electronics engineering.
+
+    <h4> Jamia Millia Islamia, India — B.Tech Mechanical Engineering </h4>
+    <h6> August 2014 - August 2018 </h6>
+    Specialized in Production Engineering and Machine Design.
+
+    <h3 style="color:blue">Projects</h3>
+    <h5> Master Project: Follow Me function in an Autonomous Delivery Robot </h5>
+    Simulated a husky robot in a custom-built Gazebo world and performed SLAM. 
+    
+    Analyzed various SLAM algorithms.
+    Made robot capable of autonomous navigation.
+    
+    <strong>Tech Stack</strong>: ROS, Gazebo, C++, CMAKE, Git
+    """,
+        unsafe_allow_html=True,
+    )
+    # with open(osp.join("pages", "ibad_cv.html")) as f:
+    #   cv = f.read()
+
+    # components.html(cv)
 
 
 if __name__ == "__main__":
