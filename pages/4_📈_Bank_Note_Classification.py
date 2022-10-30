@@ -3,6 +3,7 @@ import os.path as osp
 import pandas as pd
 import altair as alt
 import requests
+from url import BASE_URL
 
 # st.title("Bank Note Classification 💵")
 # Set page tab display
@@ -69,8 +70,7 @@ with col4:
 # st.button("Predict")
 
 # Making call to the api
-base_url = "http://127.0.0.1:8000"
-api_url = base_url + "/predict_bank_note"
+api_url = BASE_URL + "/predict_bank_note"
 
 if st.button("Predict"):
     if variance == "":

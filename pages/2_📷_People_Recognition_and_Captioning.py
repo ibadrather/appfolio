@@ -1,8 +1,7 @@
 import streamlit as st
 from PIL import Image
 import requests
-from dotenv import load_dotenv
-import os
+from url import BASE_URL
 
 # Set page tab display
 st.set_page_config(
@@ -11,12 +10,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
-load_dotenv()
-
-# url = os.getenv('API_URL')
-
-url = "http://localhost:8000"
 
 # App title and description
 st.header("Captioning my friends in photos! 📸")
@@ -53,7 +46,7 @@ if img_file_buffer is not None:
 
             ### Make request to  API (stream=True to stream response as bytes)
             res = requests.post(
-                url + "/people_recognition_caption", files={"img": img_bytes}
+                BASE_URL + "/people_recognition_caption", files={"img": img_bytes}
             )
 
             if res.status_code == 200:
