@@ -93,13 +93,25 @@ def run():
     Specialized in Production Engineering and Machine Design.
 
     <h3 style="color:blue">Projects</h3>
-    <h5> Master Project: Follow Me function in an Autonomous Delivery Robot </h5>
+    <h4> Master Project: Follow Me function in an Autonomous Delivery Robot </h4>
     Simulated a husky robot in a custom-built Gazebo world and performed SLAM. 
     
     Analyzed various SLAM algorithms.
     Made robot capable of autonomous navigation.
     
     <strong>Tech Stack</strong>: ROS, Gazebo, C++, CMAKE, Git
+
+    <h4> Appfolio: A website to host some the projects I have built </h4>
+    Built and deployed some apps to learn and showcase my skills. The apps include:
+    <ul>
+    <li> English to Dutch translator </li>
+    <li> People recognition and Image Captioning App </li>
+    <li> Basic Image Processing </li>
+    <li> Bank note classification </li>
+    </ul>
+    
+    <strong>Tech Stack</strong>: FastAPI, Streamlit, Heroku, Git, OpenCV, Pandas, Hugging Face API, ONNX Runtime, NumPy
+
     """,
         unsafe_allow_html=True,
     )
