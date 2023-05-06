@@ -8,6 +8,7 @@ PAGES = {
     "My Projects": projects_app,  # Add the My Projects page to the navigation menu
 }
 
+
 # Render the app
 def main():
     # Set page title, icon, and layout width

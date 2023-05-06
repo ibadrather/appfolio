@@ -30,7 +30,6 @@ st.markdown("### Let's see if it captions my friends correctly. 👇")
 img_file_buffer = st.file_uploader("Upload an image")
 
 if img_file_buffer is not None:
-
     col1, col2 = st.columns(2)
 
     with col1:
