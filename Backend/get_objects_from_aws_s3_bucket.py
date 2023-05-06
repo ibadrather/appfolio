@@ -70,7 +70,9 @@ def lambda_api():
 
     image_path = "images/000001_jpg.rf.5182495727dae412fdb258232cd8a86a.jpg"
     image_api_url = create_image_url_for_s3_lambda_api_gateway(
-        BASE_S3_LAMDA_API_GATEWAY_URL, BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES, image_path
+        BASE_S3_LAMDA_API_GATEWAY_URL,
+        BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES,
+        image_path,
     )
     image = get_image_from_s3_bucket(image_api_url)
     image.show()
