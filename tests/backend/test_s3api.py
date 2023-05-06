@@ -17,7 +17,7 @@ from Backend.get_objects_from_aws_s3_bucket import (
 def env_vars():
     load_dotenv()
     return {
-        "BASE_S3_LAMDA_API_GATEWAY_URL": os.environ["BASE_S3_LAMDA_API_GATEWAY_URL"],
+        "BASE_S3_LAMBDA_API_GATEWAY_URL": os.environ["BASE_S3_LAMBDA_API_GATEWAY_URL"],
         "BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES": os.environ[
             "BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES"
         ],
@@ -25,7 +25,7 @@ def env_vars():
 
 
 def test_lambda_api(env_vars) -> None:
-    base_url = env_vars["BASE_S3_LAMDA_API_GATEWAY_URL"]
+    base_url = env_vars["BASE_S3_LAMBDA_API_GATEWAY_URL"]
     bucket_name = env_vars["BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES"]
 
     image_path = "images/000001_jpg.rf.5182495727dae412fdb258232cd8a86a.jpg"
