@@ -1,6 +1,7 @@
 # Import Streamlit
 import streamlit as st
 
+
 def app():
     # Create a title with emoji
     st.title("Ibad Rather")
@@ -32,7 +33,6 @@ def app():
         for skill in skills:
             st.write(f"- {skill}")
 
-
     # Display Tools in the second column
     with col2:
         st.subheader("Tools :wrench:")
@@ -57,25 +57,43 @@ def app():
     # Freelancer - Machine Learning Engineer
     st.subheader("Machine Learning Engineer, Freelancer")
     st.write("December 2022 - Present")
-    st.markdown("- Developed a comprehensive remote sensing library that includes classical image segmentation, deep image segmentation, scene classification, and change detection, making it easier for researchers and practitioners to detect changes in rural areas.")
-    st.markdown("- Developed a human activity recognition system for indoor localization for a university.")
-    st.markdown("- Achieved state-of-the-art performance in medical image segmentation.")
-    st.markdown("**Tech Stack**: Python, PyTorch, Scikit-Learn, Pandas, NumPy, Matplotlib")
+    st.markdown(
+        "- Developed a comprehensive remote sensing library that includes classical image segmentation, deep image segmentation, scene classification, and change detection, making it easier for researchers and practitioners to detect changes in rural areas."
+    )
+    st.markdown(
+        "- Developed a human activity recognition system for indoor localization for a university."
+    )
+    st.markdown(
+        "- Achieved state-of-the-art performance in medical image segmentation."
+    )
+    st.markdown(
+        "**Tech Stack**: Python, PyTorch, Scikit-Learn, Pandas, NumPy, Matplotlib"
+    )
 
     # Carl Zeiss AG - Student Researcher
     st.subheader("Carl Zeiss AG, Jena Germany — Student Researcher")
     st.write("October 2021 - November 2022")
-    st.markdown("- Developed digital video stabilization algorithm using an Inertial Measurement Unit (IMU) to compensate for oscillating camera motion with high precision requirements of 0.1 mm.")
-    st.markdown("- Conducted extensive evaluation and comparison of deep learning architectures and classical algorithms for both pose-estimation and motion prediction using IMU sensor data, achieving high accuracy and performance with a variety of neural networks (including Transformers, CNNs, and RNNs).")
-    st.markdown("- Investigated and evaluated various simulation platforms (Epic Games Unreal Engine, Microsoft AirSim, Nvidia Omniverse) for camera and sensor simulation to create realistic and accurate simulation environments.")
-    st.markdown("**Tech Stack**: Python, PyTorch, OpenCV, NumPy, Pandas, SciPy, ONNX, PyThea, AirSim, Unreal Engine, SymPy")
+    st.markdown(
+        "- Developed digital video stabilization algorithm using an Inertial Measurement Unit (IMU) to compensate for oscillating camera motion with high precision requirements of 0.1 mm."
+    )
+    st.markdown(
+        "- Conducted extensive evaluation and comparison of deep learning architectures and classical algorithms for both pose-estimation and motion prediction using IMU sensor data, achieving high accuracy and performance with a variety of neural networks (including Transformers, CNNs, and RNNs)."
+    )
+    st.markdown(
+        "- Investigated and evaluated various simulation platforms (Epic Games Unreal Engine, Microsoft AirSim, Nvidia Omniverse) for camera and sensor simulation to create realistic and accurate simulation environments."
+    )
+    st.markdown(
+        "**Tech Stack**: Python, PyTorch, OpenCV, NumPy, Pandas, SciPy, ONNX, PyThea, AirSim, Unreal Engine, SymPy"
+    )
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
     # Mechatronics
     st.subheader("Universität Siegen, Germany — M.Sc. Mechatronics")
     st.write("October 2019 - November 2022")
-    st.markdown("Developed expertise in the areas of Deep Learning and Robotics. Possess a background in software, mechanical, control, electrical, and electronics engineering.")
+    st.markdown(
+        "Developed expertise in the areas of Deep Learning and Robotics. Possess a background in software, mechanical, control, electrical, and electronics engineering."
+    )
 
     # Mechanical Engineering
     st.subheader("Jamia Millia Islamia, India — B.Tech. Mechanical Engineering")
@@ -87,10 +105,11 @@ def app():
     # Awards section
     st.header("Awards :trophy:")
     st.subheader("Hackathon Winner: HackaTUM 2022")
-    st.write("Won the Optiver track in which we had to develop a trading bot on a simulated stock market.")
+    st.write(
+        "Won the Optiver track in which we had to develop a trading bot on a simulated stock market."
+    )
 
     st.markdown("<hr>", unsafe_allow_html=True)
-
 
     # Certificates section
     st.header("Certificates :scroll:")
@@ -107,19 +126,13 @@ def app():
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
-
     # Create a two-column layout for Languages and Location
     col1, col2 = st.columns(2)
 
     # Display Languages in the first column
     with col1:
         st.subheader("Languages :speaking_head_in_silhouette:")
-        languages = [
-            "English (C1)",
-            "Urdu (Native)",
-            "Hindi (Native)",
-            "German (A1)"
-        ]
+        languages = ["English (C1)", "Urdu (Native)", "Hindi (Native)", "German (A1)"]
 
         for language in languages:
             st.markdown(f"- {language}")
@@ -144,10 +157,7 @@ def app():
     # Display the address in the first column
     with col1:
         st.subheader("Address :house:")
-        address = [
-            "Rudolf-Breitscheid-Str 27",
-            "Jena, 07747, Germany"
-        ]
+        address = ["Rudolf-Breitscheid-Str 27", "Jena, 07747, Germany"]
 
         for line in address:
             st.markdown(line)

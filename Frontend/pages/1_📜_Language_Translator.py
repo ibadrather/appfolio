@@ -55,7 +55,7 @@ if st.button("Translate Sentence"):
 
     elif option1 == option2:
         st.warning("Please select different languages for translation")
-    
+
     elif option1 == "Dutch" and option2 == "German":
         st.warning("Sorry, translation from Dutch to German is not available")
 
@@ -85,7 +85,7 @@ if st.button("Translate Sentence"):
                     input_language="de",
                     output_language="en",
                 )
-            
+
             elif option1 == "English" and option2 == "German":
                 translation = get_translation_from_hf(
                     input_text,
@@ -101,7 +101,7 @@ if st.button("Translate Sentence"):
                     input_language="de",
                     output_language="nl",
                 )
-                
+
         st.text_area(
             label="Translation",
             value=translation,

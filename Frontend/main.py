@@ -21,5 +21,6 @@ def main():
     page = st.sidebar.radio("Go to", list(PAGES.keys()))
     PAGES[page]()
 
+
 if __name__ == "__main__":
     main()
