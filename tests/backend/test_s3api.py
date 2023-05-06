@@ -15,7 +15,7 @@ from Backend.get_objects_from_aws_s3_bucket import (
 
 @pytest.fixture
 def env_vars():
-    load_dotenv("/home/ibad/Desktop/appfolio/.env")
+    load_dotenv()
     return {
         "BASE_S3_LAMDA_API_GATEWAY_URL": os.environ["BASE_S3_LAMDA_API_GATEWAY_URL"],
         "BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES": os.environ[
