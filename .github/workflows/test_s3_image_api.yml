@@ -28,7 +28,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest test_s3_image.py
+        pytest tests/backend/test_s3api.py
       env:
         BASE_S3_LAMBDA_API_GATEWAY_URL: ${{ secrets.BASE_S3_LAMBDA_API_GATEWAY_URL }}
         BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES: ${{ secrets.BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES }}
