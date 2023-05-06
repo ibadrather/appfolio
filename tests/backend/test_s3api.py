@@ -7,19 +7,10 @@ from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 
-
-
-
-
 from Backend.get_objects_from_aws_s3_bucket import (
     create_image_url_for_s3_lambda_api_gateway,
     get_image_from_s3_bucket,
 )
-
-
-
-
-
 
 
 @pytest.fixture
@@ -33,12 +24,7 @@ def env_vars():
     }
 
 
-
-
-
-
 def test_lambda_api(env_vars) -> None:
-
     base_url = env_vars["BASE_S3_LAMDA_API_GATEWAY_URL"]
     bucket_name = env_vars["BUCKET_NAME_REV_SEARCH_DATABSE_IMAGES"]
 
