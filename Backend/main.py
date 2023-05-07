@@ -17,6 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class SimilarImagesResponse(BaseModel):
     similar_images: list
 
@@ -56,7 +57,6 @@ async def search_similar_images(
         return {"similar_images": similar_images}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
 
 
 if __name__ == "__main__":
