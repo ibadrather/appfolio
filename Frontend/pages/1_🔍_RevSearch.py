@@ -22,8 +22,6 @@ def app():
 
         st.image(resized_image, caption="Uploaded Image", use_column_width=False)
 
-        
-
         # Encode resized_image as jpeg to send it to API
         image_byte_arr = io.BytesIO()
         resized_image.save(image_byte_arr, format="JPEG")
