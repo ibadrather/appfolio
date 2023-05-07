@@ -66,8 +66,8 @@ def get_image_from_s3_bucket(image_api_url: str) -> Image.Image:
     return convert_response_to_pil_image(response)
 
 
-
 # Anychronous Functions
+
 
 async def async_get_image_from_s3_bucket(image_api_url: str) -> Optional[Image.Image]:
     """Fetches an image from an S3 bucket using the provided API URL.
