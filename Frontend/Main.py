@@ -1,6 +1,7 @@
 import streamlit as st
 from content.portfolio import app
 
+
 # Render the app
 def main():
     # Set page title, icon, and layout width

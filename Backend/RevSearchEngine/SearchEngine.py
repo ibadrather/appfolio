@@ -3,6 +3,7 @@ from DeepSearchLite.DeepSearchLite import LoadData, SearchSetup
 from RevSearchEngine.FeatureExtractor import CustomFeatureExtractor
 from PIL import Image
 
+
 class ImageSearchEngine:
     def __init__(
         self,
@@ -67,6 +68,7 @@ class ImageSearchEngine:
 
         return similar_images
 
+
 def main():
     image = Image.open("/home/ibad/Desktop/RevSearch/car.jpg")
     image = image.resize((224, 224))
@@ -88,6 +90,7 @@ def main():
     similar_images = image_search_engine.get_similar_images_list_from_image(image)
 
     print(similar_images)
+
 
 if __name__ == "__main__":
     main()
