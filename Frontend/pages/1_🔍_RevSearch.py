@@ -17,10 +17,12 @@ def app():
 
     if uploaded_image is not None:
         image = Image.open(uploaded_image).convert("RGB")
-        st.image(image, caption="Uploaded Image", use_column_width=True)
-
         # Resize image
-        resized_image = image.resize((224, 224), PIL.Image.ANTIALIAS)
+        resized_image = image.resize((224, 224), PIL.Image.Resampling.LANCZOS)
+
+        st.image(resized_image, caption="Uploaded Image", use_column_width=False)
+
+        
 
         # Encode resized_image as jpeg to send it to API
         image_byte_arr = io.BytesIO()
@@ -33,7 +35,10 @@ def app():
         )
 
         # API call
-        REVERSE_IMAGE_SEARCH_API_URL = os.environ.get("REVERSE_IMAGE_SEARCH_API_URL")
+        WEBSITE_URL = os.environ.get("APPFOLIO_WEBSITE_URL")
+        ENDPOINT = os.environ.get("REVERSE_IMAGE_SEARCH_API_ENDPOINT")
+        REVERSE_IMAGE_SEARCH_API_URL = WEBSITE_URL + ENDPOINT
+
         response = requests.post(
             REVERSE_IMAGE_SEARCH_API_URL,
             files={"image": encoded_image},
@@ -46,11 +51,13 @@ def app():
 
             # Display similar images
             st.header("Similar Images")
-            for idx, similar_image_url in enumerate(similar_images):
+            for idx, similar_image_base64 in enumerate(similar_images):
                 st.image(
-                    similar_image_url,
+                    # similar_image_base64,
+                    f"data:image/jpeg;base64,{similar_image_base64}",
                     caption=f"Similar Image {idx+1}",
-                    use_column_width=True,
+                    use_column_width=False,
+                    # format="JPEG",  # Change this to "PNG" if the images are in PNG format
                 )
         else:
             st.error("Error retrieving similar images. Please try again.")

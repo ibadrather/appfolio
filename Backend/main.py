@@ -4,6 +4,10 @@ import uvicorn
 from RevSearchEngine.SearchEngine import ImageSearchEngine
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
+from get_objects_from_aws_s3_bucket import (
+    get_multiple_images_from_s3_bucket
+)
+from typing import List
 
 
 app = FastAPI()
@@ -17,8 +21,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class SimilarImagesResponse(BaseModel):
-    similar_images: list
+    similar_images: List[str]
 
 
 @app.get("/")
@@ -49,11 +54,16 @@ async def search_similar_images(
             feature_extractor_name=FEATURE_EXTRACTOR_NAME,
         )
 
-        similar_images = image_search_engine.get_similar_images_list_from_image(
+        similar_images_names_list = image_search_engine.get_similar_images_list_from_image(
             image=image, number_of_images=number_of_images
         )
 
-        return {"similar_images": similar_images}
+        # Now get these similar images from the database
+        similar_images_base64 = await get_multiple_images_from_s3_bucket(
+            similar_images_names_list
+        )
+
+        return {"similar_images": similar_images_base64}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
