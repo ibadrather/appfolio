@@ -28,7 +28,7 @@ def test_lambda_api(env_vars) -> None:
     base_url = env_vars["BASE_S3_LAMBDA_API_GATEWAY_URL"]
     bucket_name = env_vars["BUCKET_NAME_REV_SEARCH_DATABASE_IMAGES"]
 
-    image_path = "images/000001_jpg.rf.5182495727dae412fdb258232cd8a86a.jpg"
+    image_path = "000001_jpg.rf.5182495727dae412fdb258232cd8a86a.jpg"
 
     image_api_url = create_image_url_for_s3_lambda_api_gateway(
         base_url, bucket_name, image_path
