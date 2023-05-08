@@ -33,9 +33,9 @@ def app():
         )
 
         # API call
-        WEBSITE_URL = os.environ.get("APPFOLIO_WEBSITE_URL")
+        DEEP_IMAGE_SEARCH_WEBSITE_URL = os.environ.get("DEEP_IMAGE_SEARCH_WEBSITE_URL")
         ENDPOINT = os.environ.get("REVERSE_IMAGE_SEARCH_API_ENDPOINT")
-        REVERSE_IMAGE_SEARCH_API_URL = WEBSITE_URL + ENDPOINT
+        REVERSE_IMAGE_SEARCH_API_URL = DEEP_IMAGE_SEARCH_WEBSITE_URL + ENDPOINT
 
         response = requests.post(
             REVERSE_IMAGE_SEARCH_API_URL,
