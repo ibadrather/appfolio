@@ -19,7 +19,7 @@ def app():
     st.title("RevSearch: Reverse Image Search Engine")
 
     # Upload image
-    uploaded_image = st.file_uploader("Upload an image of a car", type=["jpg", "png"])
+    uploaded_image = st.file_uploader("Upload an image of a car", type=["jpg", "png", "jpeg", "webp", "bmp"])
 
     if uploaded_image is not None:
         image = Image.open(uploaded_image).convert("RGB").resize((224, 224), PIL.Image.Resampling.LANCZOS)
