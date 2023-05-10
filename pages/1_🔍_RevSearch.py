@@ -15,6 +15,7 @@ IMAGES_DIR = "/home/ibad/Desktop/RevSearch/Car196_Combined/images/"
 METADATA_DIR = "pages/RevSearchEngine/cars_dataset_metadata_dir"
 FEATURE_EXTRACTOR_NAME = "efficientnet_onnx"
 
+
 def app():
     st.title("RevSearch: Reverse Image Search Engine")
 
@@ -22,7 +23,11 @@ def app():
     uploaded_image = st.file_uploader("Upload an image of a car", type=["jpg", "png"])
 
     if uploaded_image is not None:
-        image = Image.open(uploaded_image).convert("RGB").resize((224, 224), PIL.Image.Resampling.LANCZOS)
+        image = (
+            Image.open(uploaded_image)
+            .convert("RGB")
+            .resize((224, 224), PIL.Image.Resampling.LANCZOS)
+        )
 
         st.image(image, caption="Uploaded Image", use_column_width=False)
 
