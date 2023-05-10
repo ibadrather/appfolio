@@ -2,12 +2,18 @@ import streamlit as st
 import PIL
 from PIL import Image
 import requests
-import io
 from dotenv import load_dotenv
 import os
+from pages.RevSearchEngine.SearchEngine import ImageSearchEngine
 
 load_dotenv()
 
+# Create an instance of ImageSearchEngine with the necessary configurations
+MODEL_PATH = "pages/RevSearchEngine/models/efficientnet_feature_encoder.onnx"
+MODE = "search"
+IMAGES_DIR = "/home/ibad/Desktop/RevSearch/Car196_Combined/images/"
+METADATA_DIR = "pages/RevSearchEngine/cars_dataset_metadata_dir"
+FEATURE_EXTRACTOR_NAME = "efficientnet_onnx"
 
 def app():
     st.title("RevSearch: Reverse Image Search Engine")
@@ -16,31 +22,52 @@ def app():
     uploaded_image = st.file_uploader("Upload an image of a car", type=["jpg", "png"])
 
     if uploaded_image is not None:
-        image = Image.open(uploaded_image).convert("RGB")
-        # Resize image
-        resized_image = image.resize((224, 224), PIL.Image.Resampling.LANCZOS)
+        image = Image.open(uploaded_image).convert("RGB").resize((224, 224), PIL.Image.Resampling.LANCZOS)
 
-        st.image(resized_image, caption="Uploaded Image", use_column_width=False)
+        st.image(image, caption="Uploaded Image", use_column_width=False)
 
-        # Encode resized_image as jpeg to send it to API
-        image_byte_arr = io.BytesIO()
-        resized_image.save(image_byte_arr, format="JPEG")
-        encoded_image = image_byte_arr.getvalue()
-
+        # Get similar image
         # Select the number of similar images to display
-        num_similar_images = st.slider(
+        number_of_images_to_get = st.slider(
             "Select the number of similar images to display", 2, 6, 2
         )
+
+        # if it is greater than 6, set it to 6
+        if number_of_images_to_get > 6:
+            number_of_images_to_get = 6
+
+        image_search_engine = ImageSearchEngine(
+            model_path=MODEL_PATH,
+            images_dir=IMAGES_DIR,
+            mode=MODE,
+            metadata_dir=METADATA_DIR,
+            feature_extractor_name=FEATURE_EXTRACTOR_NAME,
+        )
+        similar_images_names_list = (
+            image_search_engine.get_similar_images_list_from_image(
+                image,
+                number_of_images_to_get,
+            )
+        )
+
+        # Jus keep the base name of the images
+        similar_images_names_list = [
+            os.path.basename(image_name) for image_name in similar_images_names_list
+        ]
 
         # API call
         DEEP_IMAGE_SEARCH_WEBSITE_URL = os.environ.get("DEEP_IMAGE_SEARCH_WEBSITE_URL")
         ENDPOINT = os.environ.get("REVERSE_IMAGE_SEARCH_API_ENDPOINT")
         REVERSE_IMAGE_SEARCH_API_URL = DEEP_IMAGE_SEARCH_WEBSITE_URL + ENDPOINT
 
+        # Create SimilarImagesRequest object
+        similar_images_request = {
+            "similar_images_names_list": similar_images_names_list
+        }
+
         response = requests.post(
             REVERSE_IMAGE_SEARCH_API_URL,
-            files={"image": encoded_image},
-            data={"number_of_images": num_similar_images},
+            json=similar_images_request,
         )
 
         if response.status_code == 200:
