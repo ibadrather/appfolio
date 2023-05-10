@@ -20,7 +20,9 @@ def app():
     st.title("RevSearch: Reverse Image Search Engine")
 
     # Upload image
-    uploaded_image = st.file_uploader("Upload an image of a car", type=["jpg", "png", "jpeg", "webp", "bmp"])
+    uploaded_image = st.file_uploader(
+        "Upload an image of a car", type=["jpg", "png", "jpeg", "webp", "bmp"]
+    )
 
     if uploaded_image is not None:
         image = (
