@@ -2,6 +2,20 @@
 import streamlit as st
 
 
+def star_rating(rating):
+    full_star = '<i class="fas fa-star"></i>'
+    half_star = '<i class="fas fa-star-half-alt"></i>'
+    empty_star = '<i class="far fa-star"></i>'
+    star_html = ""
+    for _ in range(rating // 2):
+        star_html += full_star
+    if rating % 2 == 1:
+        star_html += half_star
+    for _ in range((10 - rating) // 2):
+        star_html += empty_star
+    return star_html
+
+
 def app():
     # Create a title with emoji
     st.title("Ibad Rather")
@@ -9,6 +23,10 @@ def app():
 
     # Add a horizontal line
     st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">',
+        unsafe_allow_html=True,
+    )
 
     # Skills and Tools in columns with emojis
     st.header("Skills & Tools :hammer_and_wrench:")
@@ -17,36 +35,63 @@ def app():
     col1, col2 = st.columns(2)
 
     # Display Skills in the first column
-    with col1:
-        st.subheader("Skills :rocket:")
-        skills = [
-            "Deep Learning, Computer Vision, ML/DL Pipelines, ETL/ELT",
-            "Data Engineering, Data & Feature Engineering, Data Validation",
-            "Data Collection, Data Preprocessing, Data & Concept Drift",
-            "Image Segmentation, Image Classification, Object & Change Detection",
-            "Image Processing, Video Stabilization, Image Retrieval",
-            "Web Deployment, Backend, Software Development, Agile Development",
-            "Signal Processing, Robotics",
-            "Research & Development",
-        ]
+    # with col1:
+    st.header("Skills :rocket:")
+    skills = [
+        "Deep Learning, Computer Vision, ML/DL Pipelines, ETL/ELT",
+        "Data Engineering, Data & Feature Engineering, Data Validation",
+        "Data Collection, Data Preprocessing, Data & Concept Drift",
+        "Image Segmentation, Image Classification, Object & Change Detection",
+        "Image Processing, Video Stabilization, Image Retrieval",
+        "Web Deployment, Backend, Software Development, Agile Development",
+        "Signal Processing, Robotics",
+        "Research & Development",
+    ]
 
-        for skill in skills:
-            st.write(f"- {skill}")
+    for skill in skills:
+        st.write(f"- {skill}")
 
     # Display Tools in the second column
-    with col2:
-        st.subheader("Tools :wrench:")
-        tools = [
-            "Python, C++, MATLAB, Linux",
-            "Git, Docker, FastAPI, REST",
-            "PyTorch, TensorFlow/Keras, Scikit-Learn",
-            "MLflow, TFDV, TFX, Optuna, Airflow",
-            "Numpy, Pandas, OpenCV, SciPy",
-            "ROS, Gazebo, CMAKE",
-            "Heroku, AWS, Streamlit",
-        ]
-        for tool in tools:
-            st.write(f"- {tool}")
+    # with col2:
+    st.subheader("Tools :wrench:")
+
+    # Create a three-column layout for Tools
+    col1_tools, col2_tools, col3_tools = st.columns(3)
+
+    # Display the tools in each column
+    tools_col1 = [
+        ("Python: ", 9),
+        ("C++:", 8),
+        ("Linux", 8),
+        ("MATLAB", 8),
+        ("Git", 8),
+    ]
+
+    tools_col2 = [
+        ("Docker", 7),
+        ("FastAPI", 7),
+        ("PyTorch", 9),
+        ("TensorFlow/Keras", 8),
+        ("Scikit-Learn", 8),
+    ]
+
+    tools_col3 = [
+        ("Numpy", 8),
+        ("Pandas", 8),
+        ("OpenCV++", 8),
+        ("ROS", 7),
+        ("Gazebo", 7),
+        ("Streamlit", 8),
+    ]
+
+    for tool, rating in tools_col1:
+        col1_tools.markdown(f"- {tool} {star_rating(rating)}", unsafe_allow_html=True)
+
+    for tool, rating in tools_col2:
+        col2_tools.markdown(f"- {tool} {star_rating(rating)}", unsafe_allow_html=True)
+
+    for tool, rating in tools_col3:
+        col3_tools.markdown(f"- {tool} {star_rating(rating)}", unsafe_allow_html=True)
 
     # Add a horizontal line
     st.markdown("<hr>", unsafe_allow_html=True)
