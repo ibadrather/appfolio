@@ -1,4 +1,4 @@
-name: Format Python Code using Black and Test
+name: Format Python Code using Black and Test (CI)
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  format:
+  CI:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
