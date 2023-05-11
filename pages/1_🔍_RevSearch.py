@@ -135,6 +135,23 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
         else:
             st.error("Error retrieving similar images. Please try again.")
 
+    # technologies used
+    st.markdown("""
+## Technologies Used
+
+| Category                             | Technologies                                |
+|--------------------------------------|---------------------------------------------|
+| **Core Technologies**                | Python, PyTorch, ONNX, ONNX Runtime, Pandas |
+| **Data Preprocessing & Augmentation**| Albumentations                              |
+| **Model Optimization & Tracking**    | MLflow, Optuna                              |
+| **Web App & Deployment**             | Streamlit, FastAPI, Docker, Heroku          |
+| **Cloud Services**                   | AWS S3, AWS API Gateway, AWS Lambda         |
+| **CI/CD & Code Quality**             | Github Actions, Black, Pytest               |
+| **Image Processing**                 | PIL                                         |
+
+
+""")
+
     # Information about the app
     st.markdown(
         """
@@ -169,8 +186,26 @@ Although the Cars dataset provides a solid foundation for RevSearch, it is essen
 
 As I continue to improve and refine RevSearch, we will address these limitations by expanding the dataset, incorporating user feedback, and refining the feature extraction and search algorithms. This iterative process will help me create a more accurate and comprehensive reverse image search engine for the automotive domain.
 
+### DeepSearchLite: A Lightweight and Versatile Library for Efficient Similarity Searches
 
+DeepSearchLite, a custom lightweight library I developed, efficiently finds similar items in large datasets across various data types. With a lean design, minimal dependencies, and a versatile feature set, it is ideal for deployment in applications like RevSearch.
+
+**Key Advantages of DeepSearchLite:**
+
+* **Minimal Dependencies**: Simplifies deployment and integration into projects.
+* **Versatility**: Supports a range of data types, including images, text, and other feature vector-representable data.
+* **Efficient Similarity Search**: Utilizes advanced techniques like FAISS indexing for fast, accurate results, especially useful in projects like RevSearch.
+* **Easy Integration**: Seamless integration with custom feature encoders, streamlining the incorporation process and enhancing utility.
+
+
+### DeepSearchLite in RevSearch
+
+I leveraged DeepSearchLite's capabilities to power RevSearch's core functionality, enabling efficient similarity searches within a large dataset and providing flexibility for various data types and encoders. DeepSearchLite's minimal dependencies and easy integration made it the perfect choice for implementing RevSearch's similarity search process.
+
+By using DeepSearchLite in RevSearch, I demonstrated the library's effectiveness and showcased its potential for various applications. Its lean design and versatile feature set make it an invaluable asset for projects requiring efficient and accurate similarity searches across different data types. The development and deployment of DeepSearchLite highlight my ability to create custom solutions that enhance the performance and adaptability of my projects.
 """
+
+
     )
 
 
