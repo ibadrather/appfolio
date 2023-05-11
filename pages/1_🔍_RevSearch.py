@@ -23,6 +23,7 @@ OUTPUT_IMAGE_WIDTH = 400
 
 limiter = RequestLimiter(requests_per_day=300)
 
+
 def app():
     st.title("RevSearch: Reverse Image Search Engine")
 
@@ -49,8 +50,10 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
             .resize((224, 224), PIL.Image.Resampling.LANCZOS)
         )
 
-        #resize the image based on aspect ratio for display
-        dispaly_image = resize_image_based_on_aspect_ratio(image, output_image_width=OUTPUT_IMAGE_WIDTH)
+        # resize the image based on aspect ratio for display
+        dispaly_image = resize_image_based_on_aspect_ratio(
+            image, output_image_width=OUTPUT_IMAGE_WIDTH
+        )
 
         st.image(dispaly_image, caption="Uploaded Image", use_column_width=False)
 
@@ -71,7 +74,6 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
         except Exception as e:
             st.warning(str(e))
             return
-        
 
         image_search_engine = ImageSearchEngine(
             model_path=MODEL_PATH,
@@ -132,7 +134,6 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
                 )
         else:
             st.error("Error retrieving similar images. Please try again.")
-
 
     # Information about the app
     st.markdown(

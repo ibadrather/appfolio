@@ -1,6 +1,7 @@
 import datetime
 import os
 
+
 class RequestLimiter:
     def __init__(self, requests_per_day=200, counter_file="requests_counter.txt"):
         self.requests_per_day = requests_per_day
@@ -14,7 +15,9 @@ class RequestLimiter:
         if os.path.exists(self.counter_file):
             with open(self.counter_file, "r") as f:
                 data = f.read().splitlines()
-                self.last_request_date = datetime.datetime.strptime(data[0], "%Y-%m-%d").date()
+                self.last_request_date = datetime.datetime.strptime(
+                    data[0], "%Y-%m-%d"
+                ).date()
                 self.requests_per_day_counter = int(data[1])
 
     def save_counter(self):
