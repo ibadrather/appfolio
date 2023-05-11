@@ -25,13 +25,13 @@ limiter = RequestLimiter(requests_per_day=300)
 
 
 def app():
-    st.title("RevSearch: Reverse Image Search Engine")
+    st.title("RevSearch: Reverse Image Search")
 
     st.markdown(
         """
-### Introducing RevSearch: A Car Reverse Image Search Engine MVP
+### Introducing RevSearch: A Car Reverse Image Search MVP
 
-RevSearch is an initial MVP developed for demonstrating a car reverse image search engine app. It's a work in progress that employs cutting-edge technologies, making it an excellent addition to your portfolio. The app utilizes machine learning, computer vision, Facebook AI Similarity Search, FastAPI, Onnxruntime, AWS S3, Lambda, API Gateway, and Heroku to provide users with a seamless and efficient reverse image search experience.
+RevSearch is an initial MVP developed for demonstrating a car reverse image search app. It's a work in progress that employs cutting-edge technologies, making it an excellent addition to your portfolio. The app utilizes machine learning, computer vision, Facebook AI Similarity Search, FastAPI, Onnxruntime, AWS S3, Lambda, API Gateway, and Heroku to provide users with a seamless and efficient reverse image search experience.
 
 """
     )
