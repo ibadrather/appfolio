@@ -136,7 +136,8 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
             st.error("Error retrieving similar images. Please try again.")
 
     # technologies used
-    st.markdown("""
+    st.markdown(
+        """
 ## Technologies Used
 
 | Category                             | Technologies                                |
@@ -150,7 +151,8 @@ RevSearch is an initial MVP developed for demonstrating a car reverse image sear
 | **Image Processing**                 | PIL                                         |
 
 
-""")
+"""
+    )
 
     # Information about the app
     st.markdown(
@@ -204,8 +206,6 @@ I leveraged DeepSearchLite's capabilities to power RevSearch's core functionalit
 
 By using DeepSearchLite in RevSearch, I demonstrated the library's effectiveness and showcased its potential for various applications. Its lean design and versatile feature set make it an invaluable asset for projects requiring efficient and accurate similarity searches across different data types. The development and deployment of DeepSearchLite highlight my ability to create custom solutions that enhance the performance and adaptability of my projects.
 """
-
-
     )
 
 
