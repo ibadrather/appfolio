@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import streamlit as st
-from utils import show_code
 
 
 def process_image():
